@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-bs-theme="light"> <!-- Add theme attribute here -->
+<html lang="en" data-bs-theme="light">
 
 <head>
   <meta charset="utf-8">
@@ -12,42 +12,49 @@
 
 <body style="margin:0; font-family:sans-serif;">
 
-  <!--WRAPPER FOR BACKGROUND-->
+  <!-- WRAPPER FOR BACKGROUND -->
   <div id="contentWrapper"
     style="min-height:100vh; background:url('pics/fuji_morning.jpg') no-repeat center center fixed; background-size:cover; transition: all 0.5s;">
 
-    <!--NAVBAR-->
-    <div class="container-fluid position-sticky top-0 p-0 p-lg-3 z-1">
+    <!-- NAVBAR -->
+    <div class="container-fluid position-sticky top-0 p-0 p-lg-3" style="z-index:999;">
       <div class="container-xl p-0">
-        <div class="navigation shadow-sm p-4 px-xl-5 poppins rounded-5 border-bottom"
-          style="background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(1px); border: 1px solid rgba(255,255,255,0.3); transition: all 0.5s;">
+        <div id="navbar" class="navigation shadow-sm p-4 px-xl-5 rounded-5 border-bottom"
+          style="background: rgba(255, 255, 255, 0.6); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.3); transition: all 0.5s;">
           <div class="d-flex flex-column flex-lg-row justify-content-between align-items-center">
 
-            <!-- Brand (Logo + Text) -->
-            <div class="d-flex align-items-center">
+            <!-- BRAND SECTION -->
+            <div class="brand d-flex align-items-center">
               <a href="https://sijey-cjaa.github.io/" target="_blank" style="text-decoration:none;">
                 <img src="pics/logo_profile.png" alt="CJ's Profile Logo"
-                  style="height:90px; width:90px; border-radius:15px; object-fit:cover;">
+                  style="height:90px; width:90px; border-radius:20px; object-fit:cover;">
               </a>
-              <a href="https://sijey-cjaa.github.io/" target="_blank" style="text-decoration:none;">
-                <img src="pics/japan_logo.png" alt="JAPAN Logo"
-                  style="height:90px; width:90px; border-radius:15px; object-fit:cover;">
+
+              <a href="https://sijey-cjaa.github.io/" target="_blank" class="ms-2" style="text-decoration:none;">
+                <img src="pics/japan_logo.png" alt="Japan Logo"
+                  style="height:90px; width:90px; border-radius:20px; object-fit:cover;">
               </a>
-              <div class="fw-bold fs-4 text-black ms-3">JAPAN</div> <!-- adaptive text -->
+              <div class="ms-3 d-flex flex-column" style="line-height:1.2;">
+                <span class="fw-bold fs-4 text-body">JAPAN</span>
+              </div>
             </div>
 
-            <!-- Navigation Links -->
-            <div class="d-flex flex-row mt-4 mt-lg-0 flex-wrap justify-content-center align-items-center text-black">
-              <a href="#" class="nav-link"><small>Home</small></a>
-              <!-- Night Mode Toggle -->
-              <button id="modeToggle"
-                class="btn btn-sm ms-3 ms-md-4 px-3 py-1 fw-semibold text-light border-0"
-                style="background-color:#0078d7; border-radius:20px;">🌙 Night</button>
+            <!-- NAV LINKS -->
+            <div
+              class="d-flex flex-row mt-3 mt-lg-0 flex-wrap justify-content-center align-items-center nav-links text-body"
+              style="gap:.5rem;">
+              <a href="#" class="text-body me-3" style="text-decoration:none;"><small>Home</small></a>
+
+              <button id="modeToggle" type="button"
+                class="btn btn-sm ms-3 px-3 py-1 fw-semibold text-light border-0"
+                style="background-color:#0078d7; border-radius:20px; outline:none; cursor:pointer;"
+                aria-pressed="false">🌙 Night</button>
             </div>
           </div>
         </div>
       </div>
     </div>
+
 
     <!-- TITLE -->
     <div class="container my-5 p-5 text-center fst-italic">
@@ -59,9 +66,10 @@
       </div>
     </div>
 
-  </div> <!-- END CONTENT WRAPPER -->
+  </div> 
 
-  <!--FOOTER-->
+
+  <!-- FOOTER -->
   <div class="container-fluid p-3 shadow-sm text-center border-top"
     style="background-color:#f8f9fa; position:relative; z-index:1;">
     <div class="row">
@@ -75,34 +83,41 @@
     </div>
   </div>
 
-  <!--JS: Night/Light Mode Toggle-->
+  <!-- JS: Night/Light Mode Toggle -->
   <script>
     const button = document.getElementById('modeToggle');
     const wrapper = document.getElementById('contentWrapper');
+    const navbar = document.getElementById('navbar');
     const html = document.documentElement;
 
-    // Load previous preference
+    // Load saved theme
     if (localStorage.getItem('theme') === 'dark') {
       html.setAttribute('data-bs-theme', 'dark');
       wrapper.style.background = "url('pics/fuji_night.jpg') no-repeat center center fixed";
       wrapper.style.backgroundSize = "cover";
+      navbar.style.background = "rgba(0, 0, 0, 0.4)";
+      navbar.style.border = "1px solid rgba(255,255,255,0.2)";
       button.textContent = '☀️ Light';
     }
 
     button.addEventListener('click', () => {
-      if (html.getAttribute('data-bs-theme') === 'light') {
-        html.setAttribute('data-bs-theme', 'dark');
-        wrapper.style.background = "url('pics/fuji_night.jpg') no-repeat center center fixed";
-        wrapper.style.backgroundSize = "cover";
-        button.textContent = '☀️ Light';
-        localStorage.setItem('theme', 'dark');
-      } else {
-        html.setAttribute('data-bs-theme', 'light');
-        wrapper.style.background = "url('pics/fuji_morning.jpg') no-repeat center center fixed";
-        wrapper.style.backgroundSize = "cover";
-        button.textContent = '🌙 Night';
-        localStorage.setItem('theme', 'light');
-      }
+      const isLight = html.getAttribute('data-bs-theme') === 'light';
+
+      html.setAttribute('data-bs-theme', isLight ? 'dark' : 'light');
+      wrapper.style.background = isLight
+        ? "url('pics/fuji_night.jpg') no-repeat center center fixed"
+        : "url('pics/fuji_morning.jpg') no-repeat center center fixed";
+      wrapper.style.backgroundSize = "cover";
+
+      navbar.style.background = isLight
+        ? "rgba(0, 0, 0, 0.4)" // transparent dark navbar
+        : "rgba(255, 255, 255, 0.6)"; // transparent light navbar
+      navbar.style.border = isLight
+        ? "1px solid rgba(255,255,255,0.2)"
+        : "1px solid rgba(255,255,255,0.3)";
+
+      button.textContent = isLight ? '☀️ Light' : '🌙 Night';
+      localStorage.setItem('theme', isLight ? 'dark' : 'light');
     });
   </script>
 
