@@ -53,7 +53,7 @@
                     <a href="#" class="text-body text-decoration-none fw-semibold"><small>Home</small></a>
 
                     <button id="toggleVolume" type="button" class="btn btn-sm px-3 py-1 fw-semibold border-0"
-                        style="background-color:#28a745; border-radius:20px; color:white;">🔊 Sound On</button>
+                        style="background-color:#6c757d; border-radius:20px; color:white;">🔇 Muted</button>
 
                     <button id="modeToggle" type="button" class="btn btn-sm px-3 py-1 fw-semibold border-0 text-light"
                         style="background-color:#0078d7; border-radius:20px;">🌙 Night</button>
@@ -88,7 +88,6 @@
         </div>
     </div>
 
-
     <!-- FOOTER  -->
     <footer id="footer" class="text-center py-4 w-100 fw-semibold"
         style="background:rgba(255,255,255,0.6); backdrop-filter:blur(10px); color:#000; border-top:1px solid rgba(255,255,255,0.3); transition:all 0.5s;">
@@ -112,9 +111,22 @@
         const showcaseTitle = document.getElementById("osakaShowcaseTitle");
         const showcaseText = document.getElementById("osakaShowcaseText");
 
-        video.muted = false;
-        toggleVolume.textContent = "🔊 Sound On";
-        toggleVolume.style.backgroundColor = "#28a745";
+        // Video starts muted for autoplay
+        video.muted = true;
+        toggleVolume.textContent = "🔇 Muted";
+        toggleVolume.style.backgroundColor = "#6c757d";
+
+        toggleVolume.addEventListener("click", () => {
+            if (video.muted) {
+                video.muted = false;
+                toggleVolume.textContent = "🔊 Sound On";
+                toggleVolume.style.backgroundColor = "#28a745";
+            } else {
+                video.muted = true;
+                toggleVolume.textContent = "🔇 Muted";
+                toggleVolume.style.backgroundColor = "#6c757d";
+            }
+        });
 
         modeToggle.addEventListener("click", () => {
             darkMode = !darkMode;
@@ -144,18 +156,6 @@
                 showcaseImg.src = "pics/osaka_day.jpg";
                 showcaseTitle.textContent = "Osaka in the Morning";
                 showcaseText.textContent = "The city wakes up with bustling streets, soft sunlight reflecting off skyscrapers, and a serene atmosphere along the Sumida River. Morning markets and cafés come alive with energy.";
-            }
-        });
-
-        toggleVolume.addEventListener("click", () => {
-            if (video.muted) {
-                video.muted = false;
-                toggleVolume.textContent = "🔊 Sound On";
-                toggleVolume.style.backgroundColor = "#28a745";
-            } else {
-                video.muted = true;
-                toggleVolume.textContent = "🔇 Mute";
-                toggleVolume.style.backgroundColor = "#6c757d";
             }
         });
     </script>

@@ -99,6 +99,7 @@
     integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
     crossorigin="anonymous"></script>
 
+  <!-- Inside your script tag -->
   <script>
     const modeToggle = document.getElementById("modeToggle");
     const footer = document.getElementById("footer");
@@ -111,9 +112,22 @@
     const showcaseTitle = document.getElementById("tokyoShowcaseTitle");
     const showcaseText = document.getElementById("tokyoShowcaseText");
 
-    video.muted = false;
-    toggleVolume.textContent = "🔊 Sound On";
-    toggleVolume.style.backgroundColor = "#28a745";
+    // Start video muted for autoplay
+    video.muted = true;
+    toggleVolume.textContent = "🔇 Muted";
+    toggleVolume.style.backgroundColor = "#6c757d";
+
+    toggleVolume.addEventListener("click", () => {
+      if (video.muted) {
+        video.muted = false;
+        toggleVolume.textContent = "🔊 Sound On";
+        toggleVolume.style.backgroundColor = "#28a745";
+      } else {
+        video.muted = true;
+        toggleVolume.textContent = "🔇 Muted";
+        toggleVolume.style.backgroundColor = "#6c757d";
+      }
+    });
 
     modeToggle.addEventListener("click", () => {
       darkMode = !darkMode;
@@ -143,18 +157,6 @@
         showcaseImg.src = "pics/tokyo_day.jpg";
         showcaseTitle.textContent = "Tokyo in the Morning";
         showcaseText.textContent = "The city wakes up with bustling streets, soft sunlight reflecting off skyscrapers, and a serene atmosphere along the Sumida River. Morning markets and cafés come alive with energy.";
-      }
-    });
-
-    toggleVolume.addEventListener("click", () => {
-      if (video.muted) {
-        video.muted = false;
-        toggleVolume.textContent = "🔊 Sound On";
-        toggleVolume.style.backgroundColor = "#28a745";
-      } else {
-        video.muted = true;
-        toggleVolume.textContent = "🔇 Mute";
-        toggleVolume.style.backgroundColor = "#6c757d";
       }
     });
   </script>
