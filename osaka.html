@@ -51,7 +51,8 @@
                 <div class="d-flex flex-row mt-3 mt-lg-0 align-items-center justify-content-center flex-wrap"
                     style="gap:.6rem;">
                     <a href="#" class="text-body text-decoration-none fw-semibold"><small>Home</small></a>
-                    <a href="explore.html" class="text-body me-3" style="text-decoration:none;"><small>Explore</small></a>
+                    <a href="explore.html" class="text-body me-3"
+                        style="text-decoration:none;"><small>Explore</small></a>
                     <button id="toggleVolume" type="button" class="btn btn-sm px-3 py-1 fw-semibold border-0"
                         style="background-color:#6c757d; border-radius:20px; color:white;">🔇 Muted</button>
 
@@ -79,9 +80,14 @@
                 <div class="p-4 rounded-4 bg-body bg-opacity-75 shadow-sm">
                     <h2 id="osakaShowcaseTitle" class="fw-bold">Osaka in the Morning</h2>
                     <p id="osakaShowcaseText">
-                        The city wakes up with bustling streets, soft sunlight reflecting off skyscrapers, and a serene
-                        atmosphere
-                        along the Sumida River. Morning markets and cafés come alive with energy.
+                        I want to experience the calm and refreshing side of Osaka. As the city wakes up, the streets
+                        begin to fill with the aroma of freshly cooked takoyaki and okonomiyaki, two of Osaka’s most
+                        famous dishes. I imagine walking along the Dotonbori Canal, where the reflections of the early
+                        sunlight dance on the water and the neon signs from the night before slowly fade into day.
+                        <br>Osaka’s mornings feel warm and lively, yet peaceful at the same time. I’d love to visit
+                        Osaka Castle while the air is still cool, surrounded by cherry trees and the sounds of birds
+                        chirping. It’s the perfect place to appreciate the beauty of Japanese history while enjoying the
+                        gentle start of a new day.
                     </p>
                 </div>
             </div>
@@ -142,7 +148,7 @@
 
                 showcaseImg.src = "pics/osaka_night.jpg";
                 showcaseTitle.textContent = "Osaka at Night";
-                showcaseText.textContent = "The city lights sparkle as Osaka transforms into a dazzling nightscape. Neon signs glow, nightlife awakens, and the streets are alive with energy.";
+                showcaseText.textContent = "Osaka truly comes alive. The city transforms into a dazzling sea of lights, laughter, and endless energy. I want to see Dotonbori shining in full color, with its glowing billboards, bustling crowds, and the famous Glico Running Man sign lighting up the sky. The reflection of the neon lights on the canal creates a magical atmosphere that feels like a scene from a movie. I’d love to stroll through the street food stalls, trying warm takoyaki while hearing the cheerful voices of vendors calling out to customers. The scent of delicious food fills the air, mixing with the sounds of music and chatter all around.";
             } else {
                 document.documentElement.setAttribute("data-bs-theme", "light");
                 modeToggle.textContent = "🌙 Night";
@@ -155,7 +161,7 @@
 
                 showcaseImg.src = "pics/osaka_day.jpg";
                 showcaseTitle.textContent = "Osaka in the Morning";
-                showcaseText.textContent = "The city wakes up with bustling streets, soft sunlight reflecting off skyscrapers, and a serene atmosphere along the Sumida River. Morning markets and cafés come alive with energy.";
+                showcaseText.textContent = "I want to experience the calm and refreshing side of Osaka. As the city wakes up, the streets begin to fill with the aroma of freshly cooked takoyaki and okonomiyaki, two of Osaka’s most famous dishes. I imagine walking along the Dotonbori Canal, where the reflections of the early sunlight dance on the water and the neon signs from the night before slowly fade into day. Osaka’s mornings feel warm and lively, yet peaceful at the same time. I’d love to visit Osaka Castle while the air is still cool, surrounded by cherry trees and the sounds of birds chirping. It’s the perfect place to appreciate the beauty of Japanese history while enjoying the gentle start of a new day.";
             }
         });
     </script>
